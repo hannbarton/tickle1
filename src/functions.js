@@ -33,12 +33,17 @@ function ageValidator(age) {
 
 function baseByTwenty(fiveYears) {
   let base = 100;
-  let additionalCost = fiveYears * 20;
-  return base + additionalCost;
-
+  // need to account for when you don't pass anything in
+  if (fiveYears) {
+    let additionalCost = fiveYears * 20;
+    return base + additionalCost;
+  }
+  return base;
 }
 
-function returnCostIncrease(healthCondition, newCost) {
+function returnCostIncrease(newCost, healthCondition) {
+  // you were passing in the wrong parameters. The first parameter was the cost '100' 
+  // and the second parameter is the condition like 'none'
   let conditionPercent = healthConditions.filter(condition => condition.issue === healthCondition);
   let costFactor = conditionPercent[0].costIncrease //the pure factor percentage 
   let conditionBasePercentage = costFactor * newCost;

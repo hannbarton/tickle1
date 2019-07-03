@@ -20,6 +20,8 @@ describe('insurance quote estimator', () => {
     it('base amount should be 100', () => {
       let expected = 100
       let actual = program.baseByTwenty()
+      // you are passing in nothing into the function and it is failing bc your passing in undefined
+      // need to account for this in your function baseByTwenty
       assert(expected === actual)
     })
   })
@@ -50,10 +52,10 @@ describe('insurance quote estimator', () => {
     })
   })
   describe('baseByTwenty()', () => {
-    it('should return the number of 5-year-blocks over 18 years of age', () => {
+    it('should return the number of 5-year-blocks over 18 years of age', async () => {
       let fiveYrBlocks = 1
       let expected = 120
-      let actual = program.baseByTwenty(fiveYrBlocks)
+      let actual = await program.baseByTwenty(fiveYrBlocks)
       assert(expected === actual)
     })
     it('should return the number of 5-year-blocks over 18 years of age', () => {
